@@ -17,16 +17,16 @@ class main {
             int h = hash_f(k);
             myList[h].add(myList, x, y, col, exist, h);
         }
-/* // Вывод таблицы на экран
- System.out.println("x y Ключи");
- for (int i = 0; i < 100; i++) {
- myList[i].show(myList, i);
+ // Вывод таблицы на экран
+        System.out.println("x y Ключи");
+        for (int i = 0; i < 100; i++) {
+        myList[i].show(myList, i);
  }
- // Вывод коллизий
- System.out.println("\nВывод коллизий\nx y Ключ");
- for (int i = 0; i < 100; i++) {
- myList[i].get(myList, i);
- } */
+  //Вывод коллизий
+       System.out.println("\nВывод коллизий\nx y Ключ");
+       for (int i = 0; i < 100; i++) {
+       myList[i].get(myList, i);
+ }
     }
     private static int hash_f(int k) {
         return k % 100;
@@ -68,27 +68,29 @@ class Coord {
             }
         }
     }
+
     public String get(Coord[] point, int n) {
         String msg = "Collision isn't exist!";
         if (point[n].col != 0) {
             int k = (point[n].x + point[n].y) % 100;
             msg = "Collision is exist!";
-            // System.out.println(point[(n - point[n].col)].x + " " + point[(n - point[n].col)].y + " " +k);
-            // System.out.println(point[n].x + " " + point[n].y + " " + k);
-            // System.out.println("- - -");
+             System.out.println(point[(n - point[n].col)].x + " " + point[(n - point[n].col)].y + " " +k);
+             System.out.println(point[n].x + " " + point[n].y + " " + k);
+             System.out.println("- - -");
         }
         return msg;
     }
+
+    public void show(Coord[] point, int n) {
+        int r = 0;
+        if (point[n].exist) {
+            int k = (point[n].x + point[n].y);
+            r = k + point[n].col;
+            System.out.print(point[n].x + " " + point[n].y + " " + k + " " + r);
+            if (k != r)
+                System.out.print(" <-- Коллизия\n");
+            else
+                System.out.print("\n");
+        }
+    }
 }
- /* public void show(Coord[] point, int n) {
- int r = 0;
- if (point[n].exist) {
- int k = (point[n].x + point[n].y);
- r = k + point[n].col;
- System.out.print(point[n].x + " " + point[n].y + " " + k + " " + r);
- // if (k != r)
- // System.out.print(" <-- Коллизия\n");
- // else
- // System.out.print("\n");
- }
- } */
